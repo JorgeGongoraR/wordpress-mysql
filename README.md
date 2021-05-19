@@ -6,6 +6,14 @@ This instructions will help you to get a copy of the project in your host with t
 
 ## Pre-requisites 📋
 
+- Web browser
+- Linux or macOS or Windows
+- Kubernetes
+- Google Cloud SDK
+- Bash for Windows (git bash should suffice)
+
+## Installation 🔧
+
 ### Installing Google Cloud SDK
 
 1. Cloud SDK requires Python; supported versions are Python 3 (preferred, 3.5 to 3.8) and Python 2 (2.7.9 or higher).
@@ -27,11 +35,34 @@ This instructions will help you to get a copy of the project in your host with t
     ```shell
     ./google-cloud-sdk/install.sh
     ```
-    c. Run `gcloud init` to initialize the SDK
+    c. Export the path
     ```shell
-    ./google-cloud-sdk/bin/gcloud init
+    export PATH=~/google-cloud-sdk/bin:$PATH 
     ```
-    d. Let's obtain info about our configuration
-    ```shel
-    ./google-cloud-sdk/bin/gcloud config list
+    d. Run `gcloud init` to initialize the SDK
+    ```shell
+    gcloud init
+    ```
+    e. Let's obtain info about our configuration
+    ```shell
+    gcloud config list
+    ```
+
+### Installing Kubernetes
+
+1. Download the latest version
+    ```shell
+    wget https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    ```
+2. Set the execution permissions of the kubectl binary
+    ```shell
+    chmod +x ./kubectl
+    ```
+3. Move the binary into your PATH.
+    ```shell
+    mv ./kubectl /usr/local/bin/kubectl
+    ```
+4. Check if the most recent version has been installed
+    ```shell
+    kubectl version --client
     ```
